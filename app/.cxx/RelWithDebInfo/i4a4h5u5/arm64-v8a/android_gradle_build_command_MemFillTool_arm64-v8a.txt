@@ -1,0 +1,7 @@
+Executable : C:\Users\Android-BSP\AppData\Local\Android\Sdk\cmake\3.18.1\bin\ninja.exe
+arguments : 
+-C
+D:\ASProject\AndroidStressTest-master\app\.cxx\RelWithDebInfo\i4a4h5u5\arm64-v8a
+MemFillTool
+jvmArgs : 
+

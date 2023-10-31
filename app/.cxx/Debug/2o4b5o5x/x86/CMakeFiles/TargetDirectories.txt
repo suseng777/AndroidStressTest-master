@@ -1,0 +1,3 @@
+D:/ASProject/AndroidStressTest-master/app/.cxx/Debug/2o4b5o5x/x86/CMakeFiles/rebuild_cache.dir
+D:/ASProject/AndroidStressTest-master/app/.cxx/Debug/2o4b5o5x/x86/CMakeFiles/MemFillTool.dir
+D:/ASProject/AndroidStressTest-master/app/.cxx/Debug/2o4b5o5x/x86/CMakeFiles/edit_cache.dir

@@ -1,0 +1,7 @@
+[
+{
+  "directory": "D:/ASProject/AndroidStressTest-master/app/.cxx/Debug/2o4b5o5x/arm64-v8a",
+  "command": "C:\\Users\\Android-BSP\\AppData\\Local\\Android\\Sdk\\ndk\\21.4.7075529\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=aarch64-none-linux-android21 --gcc-toolchain=C:/Users/Android-BSP/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/Android-BSP/AppData/Local/Android/Sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/windows-x86_64/sysroot -DMemFillTool_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC -o CMakeFiles\\MemFillTool.dir\\src\\main\\cpp\\MemFillTool\\MemOpUtils.cpp.o -c D:\\ASProject\\AndroidStressTest-master\\app\\src\\main\\cpp\\MemFillTool\\MemOpUtils.cpp",
+  "file": "D:/ASProject/AndroidStressTest-master/app/src/main/cpp/MemFillTool/MemOpUtils.cpp"
+}
+]

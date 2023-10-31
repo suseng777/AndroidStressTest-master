@@ -1,0 +1,2 @@
+ninja: Entering directory `D:\ASProject\AndroidStressTest-master\app\.cxx\Debug\2o4b5o5x\x86'
+ninja: no work to do.

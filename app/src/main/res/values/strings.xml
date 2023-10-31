@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright(c) 2018 Bob Shen <ayst.shen@foxmail.com>
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
+    tools:ignore="MissingTranslation">
+
+    <string name="app_name">StressTest</string>
+    <string name="sec">s</string>
+    <string name="exit">Exit</string>
+    <string name="exit_test_tips">Are you want to exit the test?</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="stop">Stop</string>
+    <string name="start">Start</string>
+    <string name="exit_app_tips">There are ongoing tests, please exit these tests first!</string>
+    <string name="at_least_one_test_case">Choose at least one test case!</string>
+    <string name="set_time_tips">Please set the number of tests (unit: times)</string>
+    <string name="set_duration_tips">Please set the test duration (unit: hour)</string>
+    <string name="stop_test_tips">Are you want to stop testing?</string>
+
+    <!--Title-->
+    <string name="cpu_test">CPU TEST</string>
+    <string name="memory_test">LOW MEMORY TEST</string>
+    <string name="ddr_test">DDR TEST</string>
+    <string name="video_test">VIDEO TEST</string>
+    <string name="audio_test">AUDIO TEST</string>
+    <string name="wifi_test">WIFI TEST</string>
+    <string name="bluetooth_test">BLUETOOTH TEST</string>
+    <string name="airplane_mode_test">AIRPLANE MODE TEST</string>
+    <string name="reboot_test">REBOOT TEST</string>
+    <string name="sleep_test">SLEEP TEST</string>
+    <string name="recovery_test">RECOVERY TEST</string>
+    <string name="timing_boot_test">TIMING BOOT TEST</string>
+    <string name="network_test">NETWORK TEST</string>
+    <string name="camera_test">CAMERA TEST</string>
+    <string name="uvccamera_test">UVC CAMERA TEST</string>
+
+    <!--permission-->
+    <string name="request_permission">Failed to get camera permissions, the test will not work.</string>
+
+    <!--MainActivity-->
+    <string name="app_intro">Version: %1$s\nAuthor: Bob Shen\nE-Mail: ayst.shen@foxmail.com\nWeChat: ayst_shen\nUrl: https://github.com/aystshen/AndroidStressTest</string>
+
+    <!--Bluetooth Test-->
+    <string name="bt_test_intro">Bluetooth test is turned on, off, and scanned repeatedly, supporting classic and ble bluetooth.</string>
+    <string name="bt_test_check_devices">Unable to search for device as failed</string>
+    <string name="bt_test_ble">Bluetooth Ble</string>
+    <string name="bt_test_valid_device_tips">Please be sure to find at least one valid Bluetooth device nearby!</string>
+    <string name="bt_test_bt_opening">OPENING</string>
+    <string name="bt_test_bt_closing">CLOSING</string>
+    <string name="bt_test_bt_closed">CLOSED</string>
+
+    <!--CPU Test-->
+    <string name="cpu_test_intro">The CPU test supports: fixed frequency, random frequency, and CPU usage.</string>
+    <string name="cpu_test_fix_freq">Fixed frequency</string>
+    <string name="cpu_test_set_freq">Set frequency:</string>
+    <string name="cpu_test_random_freq">Random frequency</string>
+    <string name="cpu_test_set_interval">Set interval:</string>
+    <string name="cpu_test_percent">CPU usage</string>
+    <string name="cpu_test_set_percent">Set usage:</string>
+    <string name="cpu_test_cur_freq">Current freq</string>
+    <string name="cpu_test_not_support">This device does not support CPU testing!</string>
+    <string name="cpu_test_userspace_mode_not_support">Failed to set [USERSPACE_MODE], the product may not be able to perform CPU frequency conversion test!</string>
+    <string name="cpu_test_set_freq_fail">Failed to set the CPU frequency, the product may not be able to perform CPU frequency conversion test!</string>
+    <string name="cpu_test_invalid_interval">Invalid interval, please reset!</string>
+    <string name="cpu_test_invalid_percent">Invalid CPU usage, please reset!</string>
+    <string name="cpu_test_set_random_freq_fail">Failed to set the random CPU frequency, the product may not be able to perform CPU frequency conversion test!</string>
+
+    <!--WiFi Test-->
+    <string name="wifi_test_intro">The WiFi test will repeatedly turn on, off, and scan WiFi access points. </string>
+    <string name="wifi_test_check_connect">Check the WiFi connection</string>
+    <string name="wifi_test_connect_tips">Please go to the settings and connect a valid WiFi!</string>
+    <string name="wifi_test_connected">Connected</string>
+    <string name="wifi_test_connecting">Connecting</string>
+    <string name="wifi_test_authenticating">Authenticating</string>
+    <string name="wifi_test_disconnected">Disconnected</string>
+    <string name="wifi_test_obtaining_ipaddr">Obtaining ip</string>
+    <string name="wifi_test_opening">OPENING</string>
+    <string name="wifi_test_closing">CLOSING</string>
+    <string name="wifi_test_closed">CLOSED</string>
+
+    <!--Sleep Test-->
+    <string name="sleep_test_intro">The sleep test will cause the device to repeatedly sleep and wake up. </string>
+    <string name="sleep_test_check_network">Check network</string>
+    <string name="sleep_test_wakeup_duration">Wake time:</string>
+    <string name="sleep_test_sleep_duration">Sleep time:</string>
+    <string name="sleep_test_set_wakeup_duration_tips">Please set the wake up time!</string>
+    <string name="sleep_test_set_sleep_duration_tips">Please set the sleep time!</string>
+
+    <!--Video Test-->
+    <string name="video_test_intro">The video test will play the video repeatedly. During the test, please observe the video is black, is blurred, is stuck, the audio and video are synchronized.</string>
+    <string name="video_test_video_file">Tested video:</string>
+    <string name="video_test_play_error">Playback error:</string>
+    <string name="video_test_select_file_tips">Please select a video!</string>
+    <string name="video_test_select_file">Select video file</string>
+    <string name="video_test_invalid_file">Invalid file!</string>
+
+    <!--Audio Test-->
+    <string name="audio_test_intro">The audio test will play the audio repeatedly. During the test, please observe to whether the playback is normal</string>
+    <string name="audio_test_video_file">Test audio：</string>
+    <string name="audio_test_play_error">Playback error:</string>
+    <string name="audio_test_select_file_tips">Please select a Audio!</string>
+    <string name="audio_test_select_file">Select audio file</string>
+    <string name="audio_test_invalid_file">Invalid file!</string>
+
+    <!--Memory Test-->
+    <string name="memory_test_intro">Low memory test automatically malloc the memory usage to the selected percent, verifying the strong of the system under low memory.</string>
+    <string name="memory_test_fill_percent">Fill percent:</string>
+
+    <!--Reboot Test-->
+    <string name="reboot_test_intro">"Reboot the test to verify the device's power-on reliability. If the reboot is interrupted, the test fails."</string>
+    <string name="reboot_test_check_sdcard">Check sdcard</string>
+    <string name="reboot_test_check_wifi">Check WiFi</string>
+    <string name="reboot_test_capture">Capture</string>
+    <string name="reboot_test_count_down">seconds, reboot</string>
+    <string name="reboot_test_insert_sdcard_tips">Please insert the sdcard!</string>
+    <string name="reboot_test_connect_wifi_tips">Please connect to WiFi!</string>
+    <string name="reboot_test_reboot_tips">Are you want to restart the test? After confirming, the system will be restarted after %d seconds.</string>
+    <string name="reboot_test_delay_empty">Please set the delay!</string>
+    <string name="reboot_test_delay_invalid">Delay not less than %d s!</string>
+
+    <!--Airplane mode Test-->
+    <string name="airplane_mode_test_intro">The airplane mode test will turn the airplane mode on and off repeatedly while scanning the WiFi access point.</string>
+    <string name="airplane_mode_test_check_wifi">Check the WiFi connection</string>
+    <string name="airplane_mode_test_close">CLOSING</string>
+    <string name="airplane_mode_test_open">OPENING</string>
+    <string name="airplane_mode_test_opened">OPENED</string>
+
+    <!--Recovery Test-->
+    <string name="recovery_test_intro">Restoring the factory will erase all data, please insert u disk to save the state.</string>
+    <string name="recovery_test_format_sdcard">Format sdcard</string>
+    <string name="recovery_test_wipe_all">Erase all data</string>
+    <string name="recovery_test_count_down">seconds, Start factory reset</string>
+    <string name="recovery_test_insert_sdcard_tips">Please insert the SD card!</string>
+    <string name="recovery_test_save_state_failed">Saving current state failed!</string>
+    <string name="recovery_test_recovery_tips">Are you want to restore the factory settings test? After confirming, the factory settings will be restored after %d seconds.</string>
+
+    <!--Timing boot Test-->
+    <string name="timing_boot_test_intro">The timing boot test will be turned on and off repeatedly. Check whether the current time is consistent with the set time after power on.</string>
+    <string name="timing_boot_test_shutdown_count_down">seconds, Shutdown</string>
+    <string name="timing_boot_test_startup_count_down">seconds, Startup</string>
+    <string name="timing_boot_test_shutdown_tips">Are you sure you want to timing boot test? After confirming, it will shutdown after %d seconds.</string>
+    <string name="timing_boot_test_set_shutdown_delay_tips">Please set the shutdown time！</string>
+    <string name="timing_boot_test_set_startup_delay_tips">Please set the startup time！</string>
+
+    <!--Network Test-->
+    <string name="network_test_intro">The network test will ping the specified URL repeatedly.</string>
+    <string name="network_test_url_empty_tips">Please set the test URL!</string>
+    <string name="network_test_url">url:</string>
+
+    <!--Camera Test-->
+    <string name="camera_test_intro">The camera test will repeatedly open the camera for preview and take a photo. It will automatically check whether each preview and take photo is successful.</string>
+    <string name="camera_test_select_camera">Select camera:</string>
+    <string name="camera_test_interval">Interval(≥15s):</string>
+    <string name="camera_test_failure_count">Failure count：</string>
+    <string name="camera_test_interval_invalid_tips">Please set the valid interval!</string>
+
+    <!--UVCCamera Test-->
+    <string name="uvccamera_test_intro">Skip the Android Camera API, call the UVC Camera device file, repeatedly open the camera to preview and take a photo.</string>
+    <string name="uvccamera_test_disconnect_tips">The camera is disconnected!</string>
+
+    <!--DDR Test-->
+    <string name="ddr_test_intro">It tries to maximize randomized traffic to memory from processor and I/O, with the intent of creating a realistic high load situation in order to test the existing hardware devices in a computer.</string>
+    <string name="ddr_test_install_error">The stressapptest installation is abnormal and the test cannot be run!</string>
+</resources>
