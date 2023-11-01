@@ -36,14 +36,21 @@ import com.ayst.stresstest.R;
 import com.ayst.stresstest.test.base.BaseTimingTestFragment;
 import com.ayst.stresstest.test.base.TestType;
 import com.ayst.stresstest.util.ArmFreqUtils;
+import com.ayst.stresstest.util.FileUtils;
 import com.ayst.stresstest.view.DincondFontTextView;
 import com.github.lzyzsd.circleprogress.ArcProgress;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -88,7 +95,7 @@ public class CPUTestFragment extends BaseTimingTestFragment {
     private static int[] sCpuRateList = null;
 
     private static final int DELAY_CNT_BASE = 10000;
-    private static final int DELAY_CNT_STEP = 500;
+    private static final int DELAY_CNT_STEP = 50000;
     private int mDelayCnt = DELAY_CNT_BASE;
     private int mCpuRate = 100;
 
@@ -102,7 +109,18 @@ public class CPUTestFragment extends BaseTimingTestFragment {
 
     private Timer mRandomFreqTimer;
     private ReaderThread mCpuReaderThread;
-
+    String dateTime;
+    String  cpuTemp;
+    String cpu0Freq;
+    String cpu4Freq;
+    String gpuFreq;
+    int interval = 5000;
+    String dataFilePath;
+    private static final String CPU0_FREQ ="/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq";
+    private static final String CPU4_FREQ ="/sys/devices/system/cpu/cpufreq/policy4/scaling_cur_freq";
+    private static final String GPU_FREQ ="/sys/class/devfreq/ff9a0000.gpu/cur_freq";
+    private static final String CPU_TEMP = "sys/devices/virtual/thermal/thermal_zone0/temp";
+    private Timer dataFileTimer;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -345,6 +363,33 @@ public class CPUTestFragment extends BaseTimingTestFragment {
             mCpuReaderThread.start();
         }
 
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.getDefault());// HH:mm:ss
+        Date date = new Date(System.currentTimeMillis());
+        dataFilePath = simpleDateFormat.format(date);
+        dataFileTimer = new Timer();
+        FileUtils.writeTxtToFile("date_time" + "," + "cpu_temp" + "," + "little_cpu_freq" + "," + "big_cpu_freq" + "," + "gpu_freq",
+                "/sdcard/StressTest/", dataFilePath + "_status" + ".txt");
+        dataFileTimer.schedule(new TimerTask() {
+
+            @Override
+
+            public void run() {
+                StringBuffer sb = new StringBuffer();
+
+                //获取时间
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.getDefault());// HH:mm:ss
+                Date date = new Date(System.currentTimeMillis());
+                dateTime = simpleDateFormat.format(date);
+                cpuTemp = readFromFile(CPU_TEMP);
+                cpu0Freq = readFromFile(CPU0_FREQ);
+                cpu4Freq = readFromFile(CPU4_FREQ);
+                gpuFreq = readFromFile(GPU_FREQ);
+                FileUtils.writeTxtToFile(dateTime + "," + cpuTemp + "," + cpu0Freq + "," + cpu4Freq + "," + gpuFreq,
+                        "/sdcard/StressTest/", dataFilePath + "_status" + ".txt");
+            }
+
+        },1000,interval);
+
         super.start();
     }
 
@@ -353,6 +398,11 @@ public class CPUTestFragment extends BaseTimingTestFragment {
         if (mRandomFreqTimer != null) {
             mRandomFreqTimer.cancel();
             mRandomFreqTimer = null;
+        }
+
+        if (dataFileTimer != null) {
+            dataFileTimer.cancel();
+            dataFileTimer = null;
         }
 
         if (mCpuReaderThread != null) {
@@ -525,5 +575,34 @@ public class CPUTestFragment extends BaseTimingTestFragment {
             }
 
         }
+    }
+    private String readFromFile(String file) {
+
+        String ret = "";
+
+        try {
+            InputStream inputStream = new FileInputStream(file);
+
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+
+                inputStream.close();
+                ret = stringBuilder.toString();
+            }
+        }
+        catch (FileNotFoundException e) {
+            Log.e(TAG, "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e(TAG, "Can not read file: " + e.toString());
+        }
+
+        return ret;
     }
 }

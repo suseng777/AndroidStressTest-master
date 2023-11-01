@@ -25,11 +25,12 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 
 import java.io.*;
 
 public class FileUtils {
-
+    final static String TAG = "FileUtils";
     /**
      * Write file
      *
@@ -165,5 +166,85 @@ public class FileUtils {
 
     private static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    public static void writeTxtToFile(String strcontent, String filePath, String fileName) {
+        //生成文件夹之后，再生成文件，不然会出错
+        makeFilePath(filePath, fileName);
+
+        String strFilePath = filePath + fileName;
+        // 每次写入时，都换行写
+        String strContent = strcontent + "\r\n";
+        try {
+            File file = new File(strFilePath);
+            if (!file.exists()) {
+                Log.d(TAG, "Create the file:" + strFilePath);
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+            }
+            RandomAccessFile raf = new RandomAccessFile(file, "rwd");
+            raf.seek(file.length());
+            raf.write(strContent.getBytes());
+            raf.close();
+        } catch (Exception e) {
+            Log.e(TAG, "Error on write File:" + e);
+        }
+    }
+
+    //生成文件
+    public static File makeFilePath(String filePath, String fileName) {
+        File file = null;
+        makeRootDirectory(filePath);
+        try {
+            file = new File(filePath + fileName);
+            if (!file.exists()) {
+                Log.e(TAG, "file:"+(filePath + fileName)+" not exists");
+                file.createNewFile();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return file;
+    }
+
+    //生成文件夹
+    public static void makeRootDirectory(String filePath) {
+        File file = null;
+        try {
+            file = new File(filePath);
+            if (!file.exists()) {   //目录文件夹不存在的话，新建目录文件夹
+                file.mkdir();
+            }
+        } catch (Exception e) {
+            Log.i(TAG, e + "");
+        }
+    }
+
+    //读取指定目录下的所有TXT文件的文件内容
+    public static String getFileContent(File file) {
+        String content = "";
+        if (!file.isDirectory()) {  //检查此路径名的文件是否是一个目录(文件夹)
+            if (file.getName().endsWith("txt")) {//文件格式为""文件
+                try {
+                    InputStream instream = new FileInputStream(file);
+                    if (instream != null) {
+                        InputStreamReader inputreader
+                                = new InputStreamReader(instream, "UTF-8");
+                        BufferedReader buffreader = new BufferedReader(inputreader);
+                        String line = "";
+                        //分行读取
+                        while ((line = buffreader.readLine()) != null) {
+                            content += line + "\n";
+                        }
+                        instream.close();//关闭输入流
+                    }
+                } catch (java.io.FileNotFoundException e) {
+                    Log.d(TAG, "The File doesn't not exist.");
+                } catch (IOException e) {
+                    Log.d(TAG, e.getMessage());
+                }
+            }
+        }
+        return content;
     }
 }
