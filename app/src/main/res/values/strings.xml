@@ -24,7 +24,7 @@
     <string name="exit">Exit</string>
     <string name="exit_test_tips">Are you want to exit the test?</string>
     <string name="cancel">Cancel</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="stop">Stop</string>
     <string name="start">Start</string>
     <string name="exit_app_tips">There are ongoing tests, please exit these tests first!</string>
@@ -54,7 +54,7 @@
     <string name="request_permission">Failed to get camera permissions, the test will not work.</string>
 
     <!--MainActivity-->
-    <string name="app_intro">Version: %1$s\nAuthor: Bob Shen\nE-Mail: ayst.shen@foxmail.com\nWeChat: ayst_shen\nUrl: https://github.com/aystshen/AndroidStressTest</string>
+    <string name="app_intro">Version: %1$s\nAuthor: Bob Shen\nModified by:Suks\nUrl: https://github.com/aystshen/AndroidStressTest</string>
 
     <!--Bluetooth Test-->
     <string name="bt_test_intro">Bluetooth test is turned on, off, and scanned repeatedly, supporting classic and ble bluetooth.</string>
