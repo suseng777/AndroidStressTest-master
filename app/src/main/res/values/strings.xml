@@ -37,6 +37,7 @@
     <string name="cpu_test">CPU TEST</string>
     <string name="memory_test">LOW MEMORY TEST</string>
     <string name="ddr_test">DDR TEST</string>
+    <string name="battery_test">BATTERY TEST</string>
     <string name="video_test">VIDEO TEST</string>
     <string name="audio_test">AUDIO TEST</string>
     <string name="wifi_test">WIFI TEST</string>
@@ -80,6 +81,13 @@
     <string name="cpu_test_invalid_interval">Invalid interval, please reset!</string>
     <string name="cpu_test_invalid_percent">Invalid CPU usage, please reset!</string>
     <string name="cpu_test_set_random_freq_fail">Failed to set the random CPU frequency, the product may not be able to perform CPU frequency conversion test!</string>
+
+    <!--BATTERY Test-->
+    <string name="battery_test_intro">The Battery test supports: charge status, voltage now, capacity, temp, and so on.The charging status and Battery data can be saved periodically. The data file is stored under /sdcard/Battery</string>
+    <string name="battery_test_capacity">Capacity</string>
+    <string name="battery_test_temp">Temperature</string>
+    <string name="battery_test_voltage">Voltage</string>
+
 
     <!--WiFi Test-->
     <string name="wifi_test_intro">The WiFi test will repeatedly turn on, off, and scan WiFi access points. </string>

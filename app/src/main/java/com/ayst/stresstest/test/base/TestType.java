@@ -24,6 +24,7 @@ public enum TestType{
     TYPE_CPU_TEST,                  // CPU Test
     TYPE_MEMORY_TEST,               // Memory Test
     TYPE_DDR_TEST,                  // DDR Test
+    TYPE_BATTERY_TEST,              // Battery Test
     TYPE_VIDEO_TEST,                // Video Test
     TYPE_AUDIO_TEST,                // Audio Test
     TYPE_WIFI_TEST,                 // Wifi Test

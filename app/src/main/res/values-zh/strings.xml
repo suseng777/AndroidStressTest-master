@@ -34,6 +34,7 @@
     <string name="cpu_test">CPU测试</string>
     <string name="memory_test">低内存测试</string>
     <string name="ddr_test">DDR测试</string>
+    <string name="battery_test">Battery测试</string>
     <string name="video_test">视频测试</string>
     <string name="audio_test">音频测试</string>
     <string name="wifi_test">WiFi测试</string>
@@ -77,6 +78,12 @@
     <string name="cpu_test_invalid_interval">无效间隔时间，请重新设置！</string>
     <string name="cpu_test_invalid_percent">无效CPU占用率，请重新设置！</string>
     <string name="cpu_test_set_random_freq_fail">设置随机CPU频率失败，该产品可能无法进行CPU变频测试！</string>
+
+    <!--BATTERY Test-->
+    <string name="battery_test_intro">电池测试支持充电状态、电池电量、电池温度、电池电压的检测，支持充电状态及电池数据定时保存功能，数据文件路径位于/sdcard/Battery下。</string>
+    <string name="battery_test_capacity">电池电量</string>
+    <string name="battery_test_temp">电池温度</string>
+    <string name="battery_test_voltage">电池电压</string>
 
     <!--WiFi Test-->
     <string name="wifi_test_intro">WiFi测试将反复打开、关闭、并扫描附近WiFi热点。</string>
