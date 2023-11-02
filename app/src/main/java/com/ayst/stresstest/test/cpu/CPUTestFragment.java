@@ -363,7 +363,7 @@ public class CPUTestFragment extends BaseTimingTestFragment {
             mCpuReaderThread.start();
         }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.getDefault());// HH:mm:ss
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());// HH:mm:ss
         Date date = new Date(System.currentTimeMillis());
         dataFilePath = simpleDateFormat.format(date);
         dataFileTimer = new Timer();
