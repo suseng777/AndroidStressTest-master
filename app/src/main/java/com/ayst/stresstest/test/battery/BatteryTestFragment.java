@@ -57,7 +57,7 @@ public class BatteryTestFragment extends BaseTimingTestFragment {
     @BindView(R.id.tv_voltage)
     DincondFontTextView mvoltageTv;
     @BindView(R.id.tv_voltage_max)
-    TextView mMaxFreqTv;
+    TextView mMaxVoltageTv;
     @BindView(R.id.pgr_capacity)
     ArcProgress mCapacityPgr;
     @BindView(R.id.pgr_temp)
@@ -92,13 +92,13 @@ public class BatteryTestFragment extends BaseTimingTestFragment {
 
         View contentView = inflater.inflate(R.layout.fragment_battery_test, container, false);
         setContentView(contentView);
-
         unbinder = ButterKnife.bind(this, contentView);
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        mMaxVoltageTv.setText(BatteryInfoUtils.getChargeVoltage());
         super.onViewCreated(view, savedInstanceState);
     }
 

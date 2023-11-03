@@ -44,15 +44,15 @@ public class BatteryInfoUtils {
     /* BQ24192 */
     private static final String CHARGER_BQ24190_STATUS = "/sys/class/power_supply/bq24190-charger/status";
     private static final String CHARGER_BQ24190_HEALTH = "/sys/class/power_supply/bq24190-charger/health";
-
+    private static final String CHARGER_BQ24190_CHARGE_VOLTAGE = "/sys/class/power_supply/bq24190-charger/constant_charge_voltage";
     /* SGM41510 */
     private static final String CHARGER_SGM415XX_STATUS = "/sys/class/power_supply/sgm415xx-charger/status";
     private static final String CHARGER_SGM415XX_HEALTH = "/sys/class/power_supply/sgm415xx-charger/health";
-
+    private static final String CHARGER_SGM415XX_CHARGE_VOLTAGE = "/sys/class/power_supply/sgm415xx-charger/constant_charge_voltage";
     /* ETA6963 */
     private static final String CHARGER_ETA696X_STATUS = "/sys/class/power_supply/eta696x-charger/status";
     private static final String CHARGER_ETA696X_HEALTH = "/sys/class/power_supply/eta696x-charger/health";
-
+    private static final String CHARGER_ETA696X_CHARGE_VOLTAGE = "/sys/class/power_supply/eta696x-charger/constant_charge_voltage";
     /* SH366002 */
     private static final String GAUGE_SH366002_BATTERY_STATUS = "/sys/class/power_supply/sh366002-0/status";
     private static final String GAUGE_SH366002_BATTERY_PRESENT = "/sys/class/power_supply/sh366002-0/present";
@@ -87,6 +87,7 @@ public class BatteryInfoUtils {
     /* SC8885 */
     private static final String CHARGER_SC8885_STATUS = "/sys/class/power_supply/sc8885-charger/status";
     private static final String CHARGER_SC8885_HEALTH = "/sys/class/power_supply/sc8885-charger/health";
+    private static final String CHARGER_SC8885_CHARGE_VOLTAGE = "/sys/class/power_supply/sc8885-charger/constant_charge_voltage";
 
     /* SH366003 */
     private static final String GAUGE_SH366003_BATTERY_STATUS = "/sys/class/power_supply/sh366003-0/status";
@@ -110,7 +111,44 @@ public class BatteryInfoUtils {
             return Float.toString((Integer.parseInt(temp) / 1000.f));
         }
     }
-
+    public static String getChargeVoltage() {
+        String mChargeVoltage = "";
+        switch (deviceName) {
+            case "blue_lava":
+            case "blue_lava_oversea":
+            case "lava_me_3":
+            case "lava_me_3_factory":
+            case "lava_me_3_lh":
+            case "lava_me_3_lh_oversea":
+            case "lava_me_3_oversea":
+            case "lava_me_4_cfs":
+            case "lava_me_4_cfs_factory":
+            case "lava_me_4_cfs_oversea":
+                mChargeVoltage = readFromFile(CHARGER_BQ24190_CHARGE_VOLTAGE);
+                break;
+            case "lava_me_play":
+                if (harewareVersion.equals("lava_me_play_v03b_v04")) {
+                    mChargeVoltage = readFromFile(CHARGER_ETA696X_CHARGE_VOLTAGE);
+                } else if (harewareVersion.equals("lava_me_play_v05")){
+                    mChargeVoltage = readFromFile(CHARGER_SGM415XX_CHARGE_VOLTAGE);
+                }
+                break;
+            case "lava_me_4_sts_36":
+                mChargeVoltage = readFromFile(CHARGER_SGM415XX_CHARGE_VOLTAGE);
+                break;
+            case "lava_one":
+            case "lava_one_x":
+                mChargeVoltage = readFromFile(CHARGER_SC8885_CHARGE_VOLTAGE);
+                break;
+            default:
+                break;
+        }
+        if (mChargeVoltage.isEmpty()) {
+            return mChargeVoltage;
+        } else {
+            return Integer.toString(Integer.parseInt(mChargeVoltage) / 1000);
+        }
+    }
     public static String getBatterryInfo() throws IOException {
         String result = "";
             switch (deviceName) {
