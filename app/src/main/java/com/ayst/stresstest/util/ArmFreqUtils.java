@@ -47,6 +47,18 @@ public class ArmFreqUtils {
     private static File sCpuSetFreqFile = new File(
             "/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed");
 
+    private static File sBCpuFreqsFile = new File(
+            "/sys/devices/system/cpu/cpu4/cpufreq/scaling_available_frequencies");
+    private static File sBCpuCurFreqFile = new File(
+            "/sys/devices/system/cpu/cpu4/cpufreq/scaling_cur_freq");
+    private static File sBCpuMaxFreqFile = new File(
+            "/sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq");
+    private static File sBCpuMinFreqFile = new File(
+            "/sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq");
+    private static File sBCpuGovernorFreqFile = new File(
+            "/sys/devices/system/cpu/cpu4/cpufreq/scaling_governor");
+    private static File sBCpuSetFreqFile = new File(
+            "/sys/devices/system/cpu/cpu4/cpufreq/scaling_setspeed");
     private static File sGpuFreqsFile = new File("/sys/mali400_utility/param");
     private static File sGpuFreqFile_3188 = new File("/sys/mali400_utility/utility");
     private static File sGpuFreqFile = new File("/proc/pvr/freq");
@@ -117,7 +129,7 @@ public class ArmFreqUtils {
 
     public static Integer getCpuCurFreq() {
         try {
-            return Integer.valueOf(readFile(sCpuCurFreqFile));
+            return Integer.valueOf(readFile(sCpuCurFreqFile))/1000;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,6 +137,15 @@ public class ArmFreqUtils {
         return 0;
     }
 
+    public static Integer getBCpuCurFreq() {
+        try {
+            return Integer.valueOf(readFile(sBCpuCurFreqFile))/1000;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
     public static int getDDRCurFreq() {
         try {
             return Integer.valueOf(readFile(sDdrFreqFile));

@@ -36,6 +36,7 @@ import com.ayst.stresstest.R;
 import com.ayst.stresstest.test.base.BaseTimingTestFragment;
 import com.ayst.stresstest.test.base.TestType;
 import com.ayst.stresstest.util.ArmFreqUtils;
+import com.ayst.stresstest.util.BatteryInfoUtils;
 import com.ayst.stresstest.util.FileUtils;
 import com.ayst.stresstest.view.DincondFontTextView;
 import com.github.lzyzsd.circleprogress.ArcProgress;
@@ -47,6 +48,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -87,6 +89,10 @@ public class CPUTestFragment extends BaseTimingTestFragment {
     DincondFontTextView mCurFreqTv;
     @BindView(R.id.tv_freq_max)
     TextView mMaxFreqTv;
+    @BindView(R.id.tv_cpu_temp)
+    DincondFontTextView mCpuTempTv;
+    @BindView(R.id.pgr_cpu_temp)
+    ArcProgress mCpuTempPgr;
     @BindView(R.id.container_running)
     LinearLayout mRunningContainer;
     Unbinder unbinder;
@@ -100,6 +106,8 @@ public class CPUTestFragment extends BaseTimingTestFragment {
     private int mCpuRate = 100;
 
     private int mCurFreq;
+    private int mBCurFreq;
+    private float mCpuTemp;
     private int mMaxFreq;
     private int mCurPercent;
     private int mCurMyPidPercent;
@@ -207,9 +215,21 @@ public class CPUTestFragment extends BaseTimingTestFragment {
             mRunningContainer.setVisibility(View.VISIBLE);
 
             mMaxFreqTv.setText(mMaxFreq + "");
-
             mCurPercentTv.setText(mCurPercent + "");
             mCurPercentPgr.setProgress(mCurPercent);
+            mCurFreq = ArmFreqUtils.getCpuCurFreq();
+            mBCurFreq = ArmFreqUtils.getBCpuCurFreq();
+
+            String temp = BatteryInfoUtils.getCpuTemp();
+            if (temp.isEmpty()) {
+                mCpuTemp = 0f;
+            } else {
+                mCpuTemp = Float.valueOf(temp);
+            }
+            DecimalFormat df = new DecimalFormat("#.00");
+            String formattedNumber = df.format(mCpuTemp);
+            mCpuTempTv.setText(formattedNumber);
+
             if (mCurPercent >= 70) {
                 mCurPercentPgr.setFinishedStrokeColor(getResources().getColor(R.color.red));
             } else if (mCurPercent >= 50) {
@@ -226,7 +246,8 @@ public class CPUTestFragment extends BaseTimingTestFragment {
 
             if (mCurFreq > 0 && mMaxFreq > 0) {
                 int progress = mCurFreq * 100 / mMaxFreq;
-                mCurFreqTv.setText(mCurFreq + "");
+                mCurFreqTv.setText("L:"+mCurFreq + "\n"+ "B:"+mBCurFreq);
+
                 mCurFreqPgr.setProgress(progress);
                 if (progress >= 70) {
                     mCurFreqPgr.setFinishedStrokeColor(getResources().getColor(R.color.red));
@@ -235,6 +256,17 @@ public class CPUTestFragment extends BaseTimingTestFragment {
                 } else {
                     mCurFreqPgr.setFinishedStrokeColor(getResources().getColor(R.color.colorAccent));
                 }
+
+                progress = (int) (mCpuTemp * 100  / 75);
+                mCpuTempPgr.setProgress(progress);
+                if (mCpuTemp >= 75) {
+                    mCpuTempPgr.setFinishedStrokeColor(getResources().getColor(R.color.red));
+                } else if (mCpuTemp >= 65) {
+                    mCpuTempPgr.setFinishedStrokeColor(getResources().getColor(R.color.orange));
+                } else {
+                    mCpuTempPgr.setFinishedStrokeColor(getResources().getColor(R.color.colorAccent));
+                }
+
             }
         } else {
             mSettingsContainer.setVisibility(View.VISIBLE);

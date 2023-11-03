@@ -209,7 +209,7 @@
                         android:layout_centerInParent="true"
                         android:text="800"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="45sp"
+                        android:textSize="25sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -260,7 +260,80 @@
             </FrameLayout>
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
 
+            <FrameLayout
+                android:layout_width="130dp"
+                android:layout_height="130dp">
+
+                <com.github.lzyzsd.circleprogress.ArcProgress
+                    android:id="@+id/pgr_cpu_temp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:arc_finished_color="@color/colorAccent"
+                    app:arc_progress="30"
+                    app:arc_show_text="false"
+                    app:arc_stroke_width="3dp"
+                    app:arc_unfinished_color="@color/black_50" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.ayst.stresstest.view.DincondFontTextView
+                        android:id="@+id/tv_cpu_temp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="40"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="45sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@id/tv_cpu_temp"
+                        android:layout_centerHorizontal="true"
+                        android:text="@string/cpu_test_temp"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_small" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@id/tv_cpu_temp"
+                        android:layout_toRightOf="@id/tv_cpu_temp"
+                        android:text="℃"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_big"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="3dp"
+                            android:text="(65,75,115)℃"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_small" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

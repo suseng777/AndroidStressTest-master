@@ -73,6 +73,7 @@
     <string name="cpu_test_random_freq">Random frequency</string>
     <string name="cpu_test_set_interval">Set interval:</string>
     <string name="cpu_test_percent">CPU usage</string>
+    <string name="cpu_test_temp">CPU temp</string>
     <string name="cpu_test_set_percent">Set usage:</string>
     <string name="cpu_test_cur_freq">Current freq</string>
     <string name="cpu_test_not_support">This device does not support CPU testing!</string>

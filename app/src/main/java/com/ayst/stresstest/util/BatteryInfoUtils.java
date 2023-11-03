@@ -102,6 +102,15 @@ public class BatteryInfoUtils {
     private static final String GAUGE_SH366003_BATTERY_CYCLE_COUNT = "/sys/class/power_supply/sh366003-0/cycle_count";
     private static final String GAUGE_SH366003_BATTERY_POWER_AVG = "/sys/class/power_supply/sh366003-0/power_avg";
     private static final String GAUGE_SH366003_BATTERY_HEALTH = "/sys/class/power_supply/sh366003-0/health";
+    public static String getCpuTemp() {
+        String temp = readFromFile(CPU_TEMP);
+        if (temp.isEmpty()) {
+            return temp;
+        } else {
+            return Float.toString((Integer.parseInt(temp) / 1000.f));
+        }
+    }
+
     public static String getBatterryInfo() throws IOException {
         String result = "";
             switch (deviceName) {

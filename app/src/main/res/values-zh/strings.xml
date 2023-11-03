@@ -70,6 +70,7 @@
     <string name="cpu_test_random_freq">随机主频</string>
     <string name="cpu_test_set_interval">设置间隔：</string>
     <string name="cpu_test_percent">CPU占用率</string>
+    <string name="cpu_test_temp">CPU温度</string>
     <string name="cpu_test_set_percent">设置占用率：</string>
     <string name="cpu_test_cur_freq">当前频率</string>
     <string name="cpu_test_not_support">此设备不支持CPU压力测试！</string>
