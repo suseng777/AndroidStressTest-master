@@ -36,6 +36,8 @@ import com.ayst.stresstest.test.base.TestType;
 import com.ayst.stresstest.util.BatteryInfoUtils;
 import com.ayst.stresstest.util.FileUtils;
 import com.ayst.stresstest.view.DincondFontTextView;
+import com.github.lzyzsd.circleprogress.ArcProgress;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -56,6 +58,12 @@ public class BatteryTestFragment extends BaseTimingTestFragment {
     DincondFontTextView mvoltageTv;
     @BindView(R.id.tv_voltage_max)
     TextView mMaxFreqTv;
+    @BindView(R.id.pgr_capacity)
+    ArcProgress mCapacityPgr;
+    @BindView(R.id.pgr_temp)
+    ArcProgress mTempPgr;
+    @BindView(R.id.pgr_voltage)
+    ArcProgress mVoltagePgr;
     @BindView(R.id.container_content)
     LinearLayout mContentContainer;
     @BindView(R.id.container_running)
@@ -250,6 +258,31 @@ public class BatteryTestFragment extends BaseTimingTestFragment {
             mCapacityTv.setText(capacity + "");
             mTempTv.setText(temperature + "");
             mvoltageTv.setText(voltage + "");
+
+            mCapacityPgr.setProgress(100);
+            mVoltagePgr.setProgress(100);
+            if (capacity <= 10 ) {
+                mCapacityPgr.setFinishedStrokeColor(getResources().getColor(R.color.red));
+                mVoltagePgr.setFinishedStrokeColor(getResources().getColor(R.color.red));
+            } else if (capacity <= 20) {
+                mCapacityPgr.setFinishedStrokeColor(getResources().getColor(R.color.orange));
+                mVoltagePgr.setFinishedStrokeColor(getResources().getColor(R.color.orange));
+            } else {
+                mCapacityPgr.setFinishedStrokeColor(getResources().getColor(R.color.GREEN));
+                mVoltagePgr.setFinishedStrokeColor(getResources().getColor(R.color.GREEN));
+            }
+
+            mTempPgr.setProgress(100);
+            if (temperature >= 50 ) {
+                Log.e(TAG, ">=50");
+                mTempPgr.setFinishedStrokeColor(getResources().getColor(R.color.red));
+            } else if (temperature >= 45) {
+                Log.e(TAG, ">=45");
+                mTempPgr.setFinishedStrokeColor(getResources().getColor(R.color.orange));
+            } else {
+                Log.e(TAG, "<45");
+                mTempPgr.setFinishedStrokeColor(getResources().getColor(R.color.GREEN));
+            }
         }
     };
 }
