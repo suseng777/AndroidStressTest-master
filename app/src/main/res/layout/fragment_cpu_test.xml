@@ -226,7 +226,6 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/tv_freq"
                         android:layout_centerHorizontal="true"
-                        android:text="MHz"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_small" />
 
@@ -250,7 +249,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="3dp"
-                            android:text="MHz"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_small" />
 
@@ -291,7 +289,7 @@
                         android:layout_centerInParent="true"
                         android:text="40"
                         android:textColor="@color/colorPrimary"
-                        android:textSize="45sp"
+                        android:textSize="40sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -310,7 +308,7 @@
                         android:layout_toRightOf="@id/tv_cpu_temp"
                         android:text="℃"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_big"
+                        android:textSize="@dimen/text_small"
                         android:textStyle="bold" />
 
                     <LinearLayout

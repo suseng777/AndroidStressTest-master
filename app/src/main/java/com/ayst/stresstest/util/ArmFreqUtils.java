@@ -52,7 +52,7 @@ public class ArmFreqUtils {
     private static File sBCpuCurFreqFile = new File(
             "/sys/devices/system/cpu/cpu4/cpufreq/scaling_cur_freq");
     private static File sBCpuMaxFreqFile = new File(
-            "/sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq");
+            "/sys/devices/system/cpu/cpu4/cpufreq/cpuinfo_max_freq");
     private static File sBCpuMinFreqFile = new File(
             "/sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq");
     private static File sBCpuGovernorFreqFile = new File(
@@ -124,6 +124,19 @@ public class ArmFreqUtils {
             }
         }
 
+        return result;
+    }
+
+    public static String getBCpuMaxFreq() {
+        String result = "";
+            if (sBCpuMaxFreqFile.exists()) {
+                try {
+                    String freq = readFile(sBCpuMaxFreqFile);
+                    result = (Integer.valueOf(freq) / 1000 + "M");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         return result;
     }
 

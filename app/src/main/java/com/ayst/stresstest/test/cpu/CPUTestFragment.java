@@ -109,12 +109,12 @@ public class CPUTestFragment extends BaseTimingTestFragment {
     private int mBCurFreq;
     private float mCpuTemp;
     private int mMaxFreq;
+    private String  mBMaxFreq;
     private int mCurPercent;
     private int mCurMyPidPercent;
 
     protected ArrayAdapter<String> mAdapter;
     private List<String> mFreqs = null;
-
     private Timer mRandomFreqTimer;
     private ReaderThread mCpuReaderThread;
     String dateTime;
@@ -155,8 +155,8 @@ public class CPUTestFragment extends BaseTimingTestFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         mFreqs = ArmFreqUtils.getCpuAvailableFreqs();
+        mBMaxFreq = ArmFreqUtils.getBCpuMaxFreq();
         if (!mFreqs.isEmpty()) {
             String str = mFreqs.get(mFreqs.size() - 1);
             mMaxFreq = Integer.valueOf(str.split("M")[0]);
@@ -214,7 +214,7 @@ public class CPUTestFragment extends BaseTimingTestFragment {
             mSettingsContainer.setVisibility(View.INVISIBLE);
             mRunningContainer.setVisibility(View.VISIBLE);
 
-            mMaxFreqTv.setText(mMaxFreq + "");
+            mMaxFreqTv.setText("L:"+mMaxFreq + "MHz\n" + "B:"+mBMaxFreq+"Hz");
             mCurPercentTv.setText(mCurPercent + "");
             mCurPercentPgr.setProgress(mCurPercent);
             mCurFreq = ArmFreqUtils.getCpuCurFreq();
