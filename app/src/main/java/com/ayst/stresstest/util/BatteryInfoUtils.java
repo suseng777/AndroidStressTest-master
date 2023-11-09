@@ -181,23 +181,21 @@ public class BatteryInfoUtils {
                     } else if (harewareVersion.equals("lava_me_3_v15") || harewareVersion.equals("lava_me_3_v16") || harewareVersion.equals("lava_me_4_cfs_v16")) {
                         String charge_status = readFromFile(CHARGER_BQ24190_STATUS);
                         String charge_health = readFromFile(CHARGER_BQ24190_HEALTH);
-                        String bat_status = readFromFile(GAUGE_BQ27542_BATTERY_STATUS);
-                        String present = readFromFile(GAUGE_BQ27542_BATTERY_PRESENT);
-                        String voltage_now = readFromFile(GAUGE_BQ27542_BATTERY_VOLTAGE_NOW);
-                        String current_now = readFromFile(GAUGE_BQ27542_BATTERY_CURRENT_NOW);
-                        String capacity = readFromFile(GAUGE_BQ27542_BATTERY_CAPACITY);
-                        String capacity_level = readFromFile(GAUGE_BQ27542_BATTERY_CAPACITY_LEVAL);
-                        String temp = readFromFile(GAUGE_BQ27542_BATTERY_TEMP);
-                        String charge_full = readFromFile(GAUGE_BQ27542_BATTERY_CHARGE_FULL);
-                        String charge_now = readFromFile(GAUGE_BQ27542_BATTERY_CHARGE_NOW);
-                        String charge_full_design = readFromFile(GAUGE_BQ27542_BATTERY_CHARGE_FULL_DESIGN);
-                        String cycle_count = readFromFile(GAUGE_BQ27542_BATTERY_CYCLE_COUNT);
-                        String power_avg = readFromFile(GAUGE_BQ27542_BATTERY_POWER_AVG);
-                        String bat_health = readFromFile(GAUGE_BQ27542_BATTERY_HEALTH);
-                        String cw2015_voltage_now = readFromFile(GAUGE_CW2015_BATTERY_VOLTAGE_NOW);
-                        String cw2015_capacity_now = readFromFile(GAUGE_CW2015_BATTERY_CAPACITY_NOW);
+                        String bat_status = readFromFile(GAUGE_SH366002_BATTERY_STATUS);
+                        String present = readFromFile(GAUGE_SH366002_BATTERY_PRESENT);
+                        String voltage_now = readFromFile(GAUGE_SH366002_BATTERY_VOLTAGE_NOW);
+                        String current_now = readFromFile(GAUGE_SH366002_BATTERY_CURRENT_NOW);
+                        String capacity = readFromFile(GAUGE_SH366002_BATTERY_CAPACITY);
+                        String capacity_level = readFromFile(GAUGE_SH366002_BATTERY_CAPACITY_LEVAL);
+                        String temp = readFromFile(GAUGE_SH366002_BATTERY_TEMP);
+                        String charge_full = readFromFile(GAUGE_SH366002_BATTERY_CHARGE_FULL);
+                        String charge_now = readFromFile(GAUGE_SH366002_BATTERY_CHARGE_NOW);
+                        String charge_full_design = readFromFile(GAUGE_SH366002_BATTERY_CHARGE_FULL_DESIGN);
+                        String cycle_count = readFromFile(GAUGE_SH366002_BATTERY_CYCLE_COUNT);
+                        String power_avg = readFromFile(GAUGE_SH366002_BATTERY_POWER_AVG);
+                        String bat_health = readFromFile(GAUGE_SH366002_BATTERY_HEALTH);
                         String cpu_temp = readFromFile(CPU_TEMP);
-                        result = charge_status+","+charge_health+","+bat_status+","+present+","+voltage_now+","+ current_now+","+capacity+","+capacity_level+","+temp+","+charge_full+","+charge_now+","+charge_full_design+","+ cycle_count+","+power_avg+","+bat_health+","+cw2015_voltage_now+","+cw2015_capacity_now+","+cpu_temp;
+                        result = charge_status+","+charge_health+","+bat_status+","+present+","+voltage_now+","+ current_now+","+capacity+","+capacity_level+","+temp+","+charge_full+","+charge_now+","+charge_full_design+","+ cycle_count+","+power_avg+","+bat_health+","+cpu_temp;
                     }
                     break;
                 case "lava_me_play":
