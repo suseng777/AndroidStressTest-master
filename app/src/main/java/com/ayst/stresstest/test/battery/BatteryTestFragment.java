@@ -132,13 +132,14 @@ public class BatteryTestFragment extends BaseTimingTestFragment {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());// HH:mm:ss
         Date date = new Date(System.currentTimeMillis());
         dataFilePath = simpleDateFormat.format(date);
-        dateTime = simpleDateFormat.format(date);
         dataFileTimer = new Timer();
         //获取时间
         dataFileTimer.schedule(new TimerTask() {
             @Override
             public void run() {
-
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.getDefault());// HH:mm:ss
+                Date date = new Date(System.currentTimeMillis());
+                dateTime = simpleDateFormat.format(date);
                 try {
                     FileUtils.writeTxtToFile(dateTime+":"+BatteryInfoUtils.getBatterryInfo(),
                             "/sdcard/Battery/", dataFilePath+"_status"+ ".txt");
